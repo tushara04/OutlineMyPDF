@@ -80,6 +80,7 @@ If anything fails, please raise an issue or let me know directly.
 
 ## References
 [1] [OCRmyPDF](https://ocrmypdf.readthedocs.io/en/latest/introduction.html)  
+
 [2] [PDF-Bookmark](https://pypi.org/project/pdf-bookmark/)  
 
 [3] [pdftotext](https://pypi.org/project/pdftotext/)  
