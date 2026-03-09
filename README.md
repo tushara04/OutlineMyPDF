@@ -41,9 +41,10 @@ Some manual work has to be done due to the arbitrariness in the format of the co
 pdftotext -layout -f content_start_page -l content_end_page book.pdf content.txt
 ```
 This copies *all* the content in the given pages in the exact format as the PDF (hence the need for the next step). Make sure to change `book.pdf` into the correct path of the PDF.
+
 4. Open the text file (`nvim content.txt`) and clean it to match the .bmk format.
 
-Rules for .bmk format [2]:
+**Rules for .bmk format [2]**:
 1. Each line in the content represents a bookmark item to be mapped to the page number.
 2. The title of a section/chapter is separated from its PDF page number by at least 4 dots.
 3. Indentation of 2 spaces specify the level of a bookmark.
@@ -65,12 +66,12 @@ Anything....<Page Number>
 
 When cleaning, make sure to remove headers or footers of a page that appear as result of page change in the PDF, which gets copied exactly when running the step 2 command. Make sure there are no white spaces between dots or between dots and page numbers. Also make sure the indentation is exactly 2 spaces. PDF-Bookmark is sensitive about these conditions. You may use an LLM here to write you a script that does the cleaning for you.
 
-4. bmk format requires the PDF page number mapped to a title. But the printed table of content maps a title to its printed page number. So, run the following command to offset the page numbers and ensure correct mapping.
+5. bmk format requires the PDF page number mapped to a title. But the printed table of content maps a title to its printed page number. So, run the following command to offset the page numbers and ensure correct mapping.
 ```
 python bmk_generator.py content.txt offset_value > content.bmk
 ```
 
-5. Finally, use the content.bmk to add the outlines in the PDF of your book.
+6. Finally, use the content.bmk to add the outlines in the PDF of your book.
 ```
 pdf-bookmark -p book.pdf -b content.bmk -o book_with_outline.pdf
 ```
@@ -78,6 +79,6 @@ pdf-bookmark -p book.pdf -b content.bmk -o book_with_outline.pdf
 If anything fails, please raise an issue or let me know directly.
 
 ## References: 
-[1] [OCRmyPDF](https://ocrmypdf.readthedocs.io/en/latest/introduction.html)
-[2] [PDF-Bookmark](https://pypi.org/project/pdf-bookmark/)
+[1] [OCRmyPDF](https://ocrmypdf.readthedocs.io/en/latest/introduction.html)  
+[2] [PDF-Bookmark](https://pypi.org/project/pdf-bookmark/)  
 [3] Used Chat-GPT to generate the bmk_generator.py script to fix the printed page numbers in the content.txt with the offset value matching the PDF page number. All the other work is my own.
