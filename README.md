@@ -1,4 +1,4 @@
-Academics and students heavily rely on textbook PDFs, but many PDFs lack an outline with page mapping in the metadata, making navigation quite a pain because then we have to scroll back to the content page to locate sections. Neither is there a reliable online tool for this. This repository provides steps to convert a PDF into OCR and generate outlines for easier navigation in a PDF viewer.
+Academics and students heavily rely on textbook PDFs, but many PDFs lack an outline with page mapping in the metadata, making navigation quite a pain because then we have to scroll back to the content page to locate sections or open duplicate PDF tabs and navigate between them. Neither is there a reliable online tool for this. This repository provides steps to convert a PDF into OCR and generate outlines for easier navigation in a PDF viewer.
 
 ## Setup
 Note that the commands that follow are run on my Arch Linux system with nvim text editor but they can similarly be ran on other OSes and systems. I assume you have the basic software like python and git installed already. Reach out for help specific to your system.
