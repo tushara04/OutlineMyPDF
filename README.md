@@ -81,6 +81,9 @@ If anything fails, please raise an issue or let me know directly.
 ## References
 [1] [OCRmyPDF](https://ocrmypdf.readthedocs.io/en/latest/introduction.html)  
 [2] [PDF-Bookmark](https://pypi.org/project/pdf-bookmark/)  
-[3] Used Chat-GPT to generate the bmk_generator.py script to fix the printed page numbers in the content.txt with the offset value matching the PDF page number. 
+
+[3] [pdftotext](https://pypi.org/project/pdftotext/)  
+
+[4] Used Chat-GPT to generate the bmk_generator.py script to fix the printed page numbers in the content.txt with the offset value matching the PDF page number. 
 
 All the other work is my own.
