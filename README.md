@@ -45,32 +45,33 @@ Some manual work has to be done due to the arbitrariness in the format of the co
 	```
 	pdftotext -layout -f content_start_page -l content_end_page "book.pdf" content.txt
 	```
-This copies *all* the content in the given pages in the exact format as the PDF (hence the need for the next step). Make sure to change `book.pdf` into the correct path of the PDF and to replace the variables `content_start_page` and `content_end_page` with the right values.
+	This copies *all* the content in the given pages in the exact format as the PDF (hence the need for the next step). Make sure to change `book.pdf` into the correct path of the PDF and to replace the variables `content_start_page` and `content_end_page` with the right values.
 
 4. Open the text file (`nvim content.txt`) and clean it to match the .bmk format.
 
-**Rules for .bmk format [2]**:
-1. You may want to remove the "Table of Content" heading, but you can also choose to keep it with page number being `content_start_page`.
-2. Each line in the content represents a bookmark item to be mapped to the page number.
-3. The title of a section/chapter is separated from its PDF page number by at least 4 dots.
-4. Indentation of 2 spaces specify the level of a bookmark.
-5. To add custom bookmarks, follow the same format and add anything (as shown in the last line of the example) with the correct PDF page number.
+	**Rules for .bmk format [2]**:
+	1. You may want to remove the "Table of Content" heading, but you can also choose to keep it with page number being `content_start_page`.
+	2. Each line in the content represents a bookmark item to be mapped to the page number.
+	3. The title of a section/chapter is separated from its PDF page number by at least 4 dots.
+	4. Indentation of 2 spaces specify the level of a bookmark.
+	5. To add custom bookmarks, follow the same format and add anything (as shown in the last line of the example) with the correct PDF page number.  
 
-Example (directly taken from [2], but I added the last line and kept just 4 dots):
-```
-序....1
-Chapter 1....4
-Chapter 2....5
-  2.1 Section 1....6
-    2.1.1 SubSection 1....6
-    2.1.2 SubSection 2....8
-  2.2 Section 2....12
-Chapter 3....20
-Appendix....36
-Anything....<Page Number>
-```
+	Example (directly taken from [2], but I added the last line and kept just 4 dots):
 
-When cleaning, make sure to remove headers or footers of a page that appear as result of page change in the PDF, which gets copied exactly when running the step 2 command. Make sure there are no white spaces between dots or between dots and page numbers. Also make sure the indentation is exactly 2 spaces. PDF-Bookmark is sensitive about these conditions. You may use an LLM here to by giving it the content of the content.txt file and the rules and asking to clean it for you; or asking it to write you a script that does the cleaning for you given the rules.
+	```
+	序....1
+	Chapter 1....4
+	Chapter 2....5
+	  2.1 Section 1....6
+	    2.1.1 SubSection 1....6
+	    2.1.2 SubSection 2....8
+	  2.2 Section 2....12
+	Chapter 3....20
+	Appendix....36
+	Anything....<Page Number>
+	```
+
+	When cleaning, make sure to remove headers or footers of a page that appear as result of page change in the PDF, which gets copied exactly when running the step 2 command. Make sure there are no white spaces between dots or between dots and page numbers. Also make sure the indentation is exactly 2 spaces. PDF-Bookmark is sensitive about these conditions. You may use an LLM here to by giving it the content of the content.txt file and the rules and asking to clean it for you; or asking it to write you a script that does the cleaning for you given the rules.
 
 5. bmk format requires the PDF page number mapped to a title. But the printed table of content maps a title to its printed page number. So, run the following command to offset the page numbers and ensure correct mapping.
 	```
@@ -82,7 +83,7 @@ When cleaning, make sure to remove headers or footers of a page that appear as r
 	```
 	pdf-bookmark -p book.pdf -b content.bmk -o book_with_outline.pdf
 	```
-
+<br>
 If anything fails, please raise an issue or let me know directly. I have tested it twice in my system and it works well.
 
 ## References
