@@ -5,7 +5,7 @@ Note that the commands that follow are run on my Arch Linux system with nvim tex
 
 1. In your project directory, clone the repository:
 ```
-git clone 
+git clone https://github.com/tushara04/OutlineMyPDF.git
 ```
 
 2. Then activate the virtual environment:
